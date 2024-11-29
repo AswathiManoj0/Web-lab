@@ -1,0 +1,23 @@
+
+<html>
+<head>
+<title>Square of first 10 numbers</title>
+</head>
+<body>
+<h1>DISPLAY SQUARE OF FIRST 10 NUMBERS</h1>
+<button onclick="displaySquares()">Display square</button>
+<div id="squares"></div>
+<script>
+function displaySquares()
+{
+ let result="";
+ for(let i=1; i<=10; i++)
+ {
+   let square = i * i;
+   result += i + "*" + i + "=" + square + "<br>";
+ }
+ document.getElementById('squares').innerHTML = result;  
+}
+</script>
+</body>
+</html>

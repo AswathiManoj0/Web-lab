@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Day of a week</title>
+</head>
+<body>
+<h1>Find the day of the week</h1>
+<p>click the button to see the current day of week:</p>
+<button onclick="displayDay()">Get Day of the Week</button>
+<p id="day"</p>
+<script>
+function displayDay(){
+const today=new Date(); //get current date
+const daysOfWeek=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]; //array of day names
+const dayIndex=today.getDay();//get the current day index(0=sunday,6=saturday)
+document.getElementById("day").innerHTML="today is"+daysOfWeek[dayIndex]+".";} //display the day in the paragraph with id="day"
+</script>
+</body>
+</html>

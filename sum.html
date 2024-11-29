@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Sum of Two Numbers</title>
+</head>
+<body>
+    <h1>Sum of Two Numbers</h1>
+    <h2>Enter two numbers</h2>
+
+    <label for="a">First number</label><br>
+    <input type="number" id="a" placeholder="Enter first number"><br>
+
+    <label for="b">Second number</label><br>
+    <input type="number" id="b" placeholder="Enter second number"><br>
+
+    <button onclick="calculatesum()">SUM OF TWO NUMBERS</button>
+
+    <div id="sum"></div>
+
+    <script>
+        function calculatesum() {
+         
+           let a = parseFloat(document.getElementById('a').value);
+            let b = parseFloat(document.getElementById('b').value);
+
+           
+            let sum = a + b;
+
+
+            document.getElementById('sum').innerHTML = 'The sum is: ' + sum;
+        }
+    </script>
+</body>
+</html>

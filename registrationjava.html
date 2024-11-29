@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<script>
+function validateForm()
+{
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var confirmpassword = document.getElementById("confirmpassword").value;
+    var emailpattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,4}$/;
+
+    if (username == "")
+    {
+        alert("Username must be filled out");
+        return false;
+    }
+    if (email == "")
+    {
+        alert("Email must be filled out");
+        return false;
+    }
+    if (!email.match(emailpattern))
+    {
+        alert("Please enter a valid email address");
+        return false;
+    }
+    if (password == "")
+    {
+        alert("Password must be filled out");
+        return false;
+    }
+    if (password != confirmpassword)
+    {
+        alert("Passwords do not match");
+        return false;
+    }
+
+    alert("Registration successful");
+    return true;
+}
+</script>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./stars.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+ #h {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 400px;
+    height: 400px;
+    background-color: powderblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.input {
+    margin: 10px 0;
+}
+input[type="text"], input[type="password"], input[type="email"] {
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+</style>
+<body>
+<div class="container">
+<div class="input">
+    <form id="registration-form" onsubmit="return validateForm()">
+        <div class="input">
+            <label for="username">USERNAME</label><br>
+            <input type="text" id="username" name="username" placeholder="Enter your username"><br><br>
+            <span id="username_error" class="error"></span>
+        </div>
+        <div class="input">
+            <label for="email">EMAIL</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter your email"><br><br>
+            <span id="email_error" class="error"></span>
+        </div>
+        <div class="input">
+            <label for="password">PASSWORD</label><br>
+            <input type="password" id="password" name="password" placeholder="Enter your password"><br><br>
+        </div>
+        <div class="input">
+            <label for="confirmpassword">CONFIRM PASSWORD</label><br><br>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm your password"><br><br>
+        </div>
+        <div class="input">
+            <input type="submit" value="Register">
+        </div>
+    </form>
+</div>
+</body>
+</html>

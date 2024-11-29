@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display even numbers up to 20</title>
+</head>
+<body>
+  <h1>Display even numbers up to 20</h1>
+  <button onclick="displayEvenNumbers()">Show even numbers</button>
+  <div id="result"></div>
+
+  <script>
+    function displayEvenNumbers() {
+      let result = '';
+      for (let i = 1; i <= 20; i++) {
+        if (i % 2 === 0) {
+          result += i + '<br>';
+        }
+      }
+      document.getElementById('result').innerHTML = result;
+    }
+  </script>
+</body>
+</html>

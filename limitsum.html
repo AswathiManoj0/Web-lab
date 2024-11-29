@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Sum of Two Numbers</title>
+</head>
+<body>
+    <h1>Sum of  Numbers</h1>
+    <h2>Enter the limit</h2>
+<label for="n">Enter limits</label><br>
+<input type="number" id="n" placeholder="Enter limit"><br>
+    <button onclick="calculatesum()">SUM OF NUMBERS</button>
+<div id="sum"></div>
+<script>
+function calculatesum() 
+{
+    let n = parseFloat(document.getElementById('n').value);
+    let sum = 0;  // Initialize sum to 0
+
+    for (let i = 0; i <= n; i++) {
+        sum += i;  // Add each number from 0 to n to sum
+    }
+    
+    document.getElementById('sum').innerHTML = 'The sum is: ' + sum;  // Display the result
+}
+</script>
+</body>
+</html>

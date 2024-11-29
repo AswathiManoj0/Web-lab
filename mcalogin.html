@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCA LOGIN</title>
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./minimalist-mountains-19.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+#h {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+.container {
+    width: 400px;
+    height: 400px;
+    background-color: powderblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.input {
+    margin: 10px 0;
+    width: 80%;
+}
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+.error {
+    color: red;
+    font-size: 12px;
+}
+</style>
+<script>
+function validateLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Clear previous errors
+    document.getElementById("username_error").innerHTML = "";
+    document.getElementById("password_error").innerHTML = "";
+
+    // Check if username is empty
+    if (username == "") {
+        document.getElementById("username_error").innerHTML = "Username is required.";
+        return false;
+    }
+
+    // Check if password is empty
+    if (password == "") {
+        document.getElementById("password_error").innerHTML = "Password is required.";
+        return false;
+    }
+
+    // If both fields are filled, proceed with form submission
+    alert("Login successful!");
+    return true;  // Allow form submission
+}
+</script>
+</head>
+<body>
+<form onsubmit="return validateLogin()">
+<h1 id="h"><b>MCA LOGIN</b></h1>
+<div class="container">
+    <div class="input">
+        <label for="username">USERNAME:</label><br>
+        <input type="text" id="username" name="username" placeholder="Enter username" required><br><br>
+        <span id="username_error" class="error"></span>
+    </div>
+    <div class="input">
+        <label for="password">PASSWORD:</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+        <span id="password_error" class="error"></span>
+    </div>
+    <button type="submit">LOGIN</button>
+</div>
+</form>
+</body>
+</html>
