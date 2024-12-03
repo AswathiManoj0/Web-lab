@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Click Background Color Changer</title>
+    <style>
+        /* Styling to center the button and make the page look nice */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #FF6347; /* Initial color */
+        }
+        
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            background-color: #fff;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to trigger the background color change -->
+    <button id="colorButton">Change Background Color</button>
+
+    <script>
+        // Array of possible background colors
+        const colors = ['#FF6347', '#7FFF00', '#1E90FF', '#FFD700', '#FF1493'];
+
+        // Index to track the color in the array
+        let currentColorIndex = 0;
+
+        // Event listener for the button click
+        document.getElementById('colorButton').addEventListener('click', function() {
+            // Change the background color to the next one in the array
+            document.body.style.backgroundColor = colors[currentColorIndex];
+
+            // Update the index to the next color in the array, looping back to 0 if at the end
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+        });
+    </script>
+</body>
+</html>

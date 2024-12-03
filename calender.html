@@ -1,0 +1,124 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar Generator</title>
+<style>
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.month {
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.month-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+}
+.day {
+  padding: 10px;
+  margin: 2px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.day.empty {
+  background-color: #f0f0f0;
+  cursor: default;
+}
+.today {
+  background-color: powderblue;
+  font-weight: bold;
+}
+button {
+  padding: 10px;
+  margin: 20px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #45a049;
+}
+</style>
+</head>
+<body>
+<button onclick="generateCalendar()">Generate calendar for year</button>
+<div id="calendar-container"></div>
+<script>
+function generateCalendar() {
+  const year = prompt("Please enter the year:");
+  if (!year || isNaN(year) || year < 1000 || year > 9999) {
+    return;
+  }
+
+  const calendarContainer = document.getElementById("calendar-container");
+  calendarContainer.innerHTML = '';  // Clear any existing calendar
+
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth();
+  const currentDate = today.getDate();
+
+  for (let month = 0; month < 12; month++) {
+    const monthContainer = document.createElement('div');
+    monthContainer.className = 'month';
+
+    // Create month name
+    const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
+    const monthHeader = document.createElement('div');
+    monthHeader.className = 'month-name';
+    monthHeader.innerText = `${monthName} ${year}`;
+    monthContainer.appendChild(monthHeader);
+
+    const firstDay = new Date(year, month, 1).getDay();  // Get the first day of the month
+    const daysInMonth = new Date(year, month + 1, 0).getDate();  // Get number of days in the month
+
+    const daysGrid = document.createElement('div');
+    daysGrid.className = 'days';
+
+    // Add empty cells for days before the first day of the month
+    for (let i = 0; i < firstDay; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.className = 'day empty';  // Empty cell for visual spacing
+      daysGrid.appendChild(emptyCell);
+    }
+
+    // Add the days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayCell = document.createElement('div');
+      dayCell.className = 'day';
+
+      // Highlight today's date
+      if (year === currentYear && month === currentMonth && day === currentDate) {
+        dayCell.classList.add('today');
+      }
+
+      dayCell.innerText = day;
+      daysGrid.appendChild(dayCell);
+    }
+
+    monthContainer.appendChild(daysGrid);
+    calendarContainer.appendChild(monthContainer);
+  }
+}
+</script>
+</body>
+</html>
